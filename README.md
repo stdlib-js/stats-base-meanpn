@@ -31,7 +31,7 @@ The [arithmetic mean][arithmetic-mean] is defined as
 <!-- <equation class="equation" label="eq:arithmetic_mean" align="center" raw="\mu = \frac{1}{n} \sum_{i=0}^{n-1} x_i" alt="Equation for the arithmetic mean."> -->
 
 <div class="equation" align="center" data-raw-text="\mu = \frac{1}{n} \sum_{i=0}^{n-1} x_i" data-equation="eq:arithmetic_mean">
-    <img src="https://cdn.rawgit.com/stdlib-js/stdlib/7158616c9399e313d462e91b1a5c0f82d090c372/lib/node_modules/@stdlib/stats/base/meanpn/docs/img/equation_arithmetic_mean.svg" alt="Equation for the arithmetic mean.">
+    <img src="https://cdn.jsdelivr.net/gh/stdlib-js/stdlib@7158616c9399e313d462e91b1a5c0f82d090c372/lib/node_modules/@stdlib/stats/base/meanpn/docs/img/equation_arithmetic_mean.svg" alt="Equation for the arithmetic mean.">
     <br>
 </div>
 
@@ -246,7 +246,7 @@ Copyright &copy; 2016-2021. The Stdlib [Authors][stdlib-authors].
 
 [stdlib-license]: https://raw.githubusercontent.com/stdlib-js/stats-base-meanpn/main/LICENSE
 
-[arithmetic-mean]: https://en.wikipedia.org/wiki/Arithmetic_meanpn
+[arithmetic-mean]: https://en.wikipedia.org/wiki/Arithmetic_mean
 
 [mdn-array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
 
