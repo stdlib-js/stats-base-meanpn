@@ -2,6 +2,63 @@
 
 > Package changelog.
 
+<section class="release" id="unreleased">
+
+## Unreleased (2025-04-01)
+
+<section class="features">
+
+### Features
+
+-   [`f0df313`](https://github.com/stdlib-js/stdlib/commit/f0df313876ca0590d2a919d98c4411e4e51d50f0) - added accessor protocol support to `stats/base/meanpn` [(#5908)](https://github.com/stdlib-js/stdlib/pull/5908)
+
+</section>
+
+<!-- /.features -->
+
+<section class="issues">
+
+### Closed Issues
+
+This release closes the following issue:
+
+[#5650](https://github.com/stdlib-js/stdlib/issues/5650)
+
+</section>
+
+<!-- /.issues -->
+
+<section class="commits">
+
+### Commits
+
+<details>
+
+-   [`f0df313`](https://github.com/stdlib-js/stdlib/commit/f0df313876ca0590d2a919d98c4411e4e51d50f0) - **feat:** added accessor protocol support to `stats/base/meanpn` [(#5908)](https://github.com/stdlib-js/stdlib/pull/5908) _(by Dhruvil Mehta, Athan Reines)_
+
+</details>
+
+</section>
+
+<!-- /.commits -->
+
+<section class="contributors">
+
+### Contributors
+
+A total of 2 people contributed to this release. Thank you to the following contributors:
+
+-   Athan Reines
+-   Dhruvil Mehta
+
+</section>
+
+<!-- /.contributors -->
+
+</section>
+
+<!-- /.release -->
+
 <section class="release" id="v0.2.2">
 
 ## 0.2.2 (2024-07-28)
