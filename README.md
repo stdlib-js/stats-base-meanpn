@@ -2,7 +2,7 @@
 
 @license Apache-2.0
 
-Copyright (c) 2020 The Stdlib Authors.
+Copyright (c) 2025 The Stdlib Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -56,49 +56,42 @@ The [arithmetic mean][arithmetic-mean] is defined as
 
 <!-- /.intro -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/stats-base-meanpn
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
-To use in Observable,
-
 ```javascript
-meanpn = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-meanpn@umd/browser.js' )
+var meanpn = require( '@stdlib/stats-base-meanpn' );
 ```
 
-To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
+#### meanpn( N, x, strideX )
 
-```javascript
-var meanpn = require( 'path/to/vendor/umd/stats-base-meanpn/index.js' )
-```
-
-To include the bundle in a webpage,
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-meanpn@umd/browser.js"></script>
-```
-
-If no recognized module system is present, access bundle contents via the global scope:
-
-```html
-<script type="text/javascript">
-(function () {
-    window.meanpn;
-})();
-</script>
-```
-
-#### meanpn( N, x, stride )
-
-Computes the [arithmetic mean][arithmetic-mean] of a strided array `x` using a two-pass error correction algorithm.
+Computes the [arithmetic mean][arithmetic-mean] of a strided array using a two-pass error correction algorithm.
 
 ```javascript
 var x = [ 1.0, -2.0, 2.0 ];
-var N = x.length;
 
-var v = meanpn( N, x, 1 );
+var v = meanpn( x.length, x, 1 );
 // returns ~0.3333
 ```
 
@@ -106,17 +99,13 @@ The function has the following parameters:
 
 -   **N**: number of indexed elements.
 -   **x**: input [`Array`][mdn-array] or [`typed array`][mdn-typed-array].
--   **stride**: index increment for `x`.
+-   **strideX**: stride length for `x`.
 
-The `N` and `stride` parameters determine which elements in `x` are accessed at runtime. For example, to compute the [arithmetic mean][arithmetic-mean] of every other element in `x`,
+The `N` and stride parameters determine which elements in the strided array are accessed at runtime. For example, to compute the [arithmetic mean][arithmetic-mean] of every other element in the input array
 
 ```javascript
-var floor = require( '@stdlib/math-base-special-floor' );
-
 var x = [ 1.0, 2.0, 2.0, -7.0, -2.0, 3.0, 4.0, 2.0 ];
-var N = floor( x.length / 2 );
-
-var v = meanpn( N, x, 2 );
+var v = meanpn( 4, x, 2 );
 // returns 1.25
 ```
 
@@ -126,42 +115,35 @@ Note that indexing is relative to the first index. To introduce an offset, use [
 
 ```javascript
 var Float64Array = require( '@stdlib/array-float64' );
-var floor = require( '@stdlib/math-base-special-floor' );
 
 var x0 = new Float64Array( [ 2.0, 1.0, 2.0, -2.0, -2.0, 2.0, 3.0, 4.0 ] );
 var x1 = new Float64Array( x0.buffer, x0.BYTES_PER_ELEMENT*1 ); // start at 2nd element
 
-var N = floor( x0.length / 2 );
-
-var v = meanpn( N, x1, 2 );
+var v = meanpn( 4, x1, 2 );
 // returns 1.25
 ```
 
-#### meanpn.ndarray( N, x, stride, offset )
+#### meanpn.ndarray( N, x, strideX, offsetX )
 
 Computes the [arithmetic mean][arithmetic-mean] of a strided array using a two-pass error correction algorithm and alternative indexing semantics.
 
 ```javascript
 var x = [ 1.0, -2.0, 2.0 ];
-var N = x.length;
 
-var v = meanpn.ndarray( N, x, 1, 0 );
+var v = meanpn.ndarray( x.length, x, 1, 0 );
 // returns ~0.33333
 ```
 
 The function has the following additional parameters:
 
--   **offset**: starting index for `x`.
+-   **offsetX**: starting index for `x`.
 
-While [`typed array`][mdn-typed-array] views mandate a view offset based on the underlying `buffer`, the `offset` parameter supports indexing semantics based on a starting index. For example, to calculate the [arithmetic mean][arithmetic-mean] for every other value in `x` starting from the second value
+While [`typed array`][mdn-typed-array] views mandate a view offset based on the underlying buffer, the offset parameter supports indexing semantics based on a starting index. For example, to calculate the [arithmetic mean][arithmetic-mean] for every other element in the strided array starting from the second element
 
 ```javascript
-var floor = require( '@stdlib/math-base-special-floor' );
-
 var x = [ 2.0, 1.0, 2.0, -2.0, -2.0, 2.0, 3.0, 4.0 ];
-var N = floor( x.length / 2 );
 
-var v = meanpn.ndarray( N, x, 2, 1 );
+var v = meanpn.ndarray( 4, x, 2, 1 );
 // returns 1.25
 ```
 
@@ -174,6 +156,7 @@ var v = meanpn.ndarray( N, x, 2, 1 );
 ## Notes
 
 -   If `N <= 0`, both functions return `NaN`.
+-   Both functions support array-like objects having getter and setter accessors for array element access (e.g., [`@stdlib/array-base/accessor`][@stdlib/array/base/accessor]).
 -   Depending on the environment, the typed versions ([`dmeanpn`][@stdlib/stats/base/dmeanpn], [`smeanpn`][@stdlib/stats/base/smeanpn], etc.) are likely to be significantly more performant.
 
 </section>
@@ -186,33 +169,17 @@ var v = meanpn.ndarray( N, x, 2, 1 );
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/random-base-randu@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-round@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/array-float64@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-meanpn@umd/browser.js"></script>
-<script type="text/javascript">
-(function () {
+```javascript
+var discreteUniform = require( '@stdlib/random-array-discrete-uniform' );
+var meanpn = require( '@stdlib/stats-base-meanpn' );
 
-var x;
-var i;
-
-x = new Float64Array( 10 );
-for ( i = 0; i < x.length; i++ ) {
-    x[ i ] = round( (randu()*100.0) - 50.0 );
-}
+var x = discreteUniform( 10, -50, 50, {
+    'dtype': 'float64'
+});
 console.log( x );
 
 var v = meanpn( x.length, x, 1 );
 console.log( v );
-
-})();
-</script>
-</body>
-</html>
 ```
 
 </section>
@@ -327,19 +294,21 @@ Copyright &copy; 2016-2025. The Stdlib [Authors][stdlib-authors].
 
 [mdn-typed-array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
 
+[@stdlib/array/base/accessor]: https://github.com/stdlib-js/array-base-accessor
+
 [@neely:1966a]: https://doi.org/10.1145/365719.365958
 
 [@schubert:2018a]: https://doi.org/10.1145/3221269.3223036
 
 <!-- <related-links> -->
 
-[@stdlib/stats/base/dmeanpn]: https://github.com/stdlib-js/stats-base-dmeanpn/tree/umd
+[@stdlib/stats/base/dmeanpn]: https://github.com/stdlib-js/stats-base-dmeanpn
 
-[@stdlib/stats/base/mean]: https://github.com/stdlib-js/stats-base-mean/tree/umd
+[@stdlib/stats/base/mean]: https://github.com/stdlib-js/stats-base-mean
 
-[@stdlib/stats/base/nanmeanpn]: https://github.com/stdlib-js/stats-base-nanmeanpn/tree/umd
+[@stdlib/stats/base/nanmeanpn]: https://github.com/stdlib-js/stats-base-nanmeanpn
 
-[@stdlib/stats/base/smeanpn]: https://github.com/stdlib-js/stats-base-smeanpn/tree/umd
+[@stdlib/stats/base/smeanpn]: https://github.com/stdlib-js/stats-base-smeanpn
 
 <!-- </related-links> -->
 
