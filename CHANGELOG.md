@@ -4,7 +4,7 @@
 
 <section class="release" id="unreleased">
 
-## Unreleased (2025-04-01)
+## Unreleased (2025-06-05)
 
 <section class="features">
 
@@ -34,6 +34,7 @@ This release closes the following issue:
 
 <details>
 
+-   [`021eb13`](https://github.com/stdlib-js/stdlib/commit/021eb13dce7e7c359ec262d0d37cce210deef3a7) - **refactor:** update paths _(by Gururaj Gurram)_
 -   [`f0df313`](https://github.com/stdlib-js/stdlib/commit/f0df313876ca0590d2a919d98c4411e4e51d50f0) - **feat:** added accessor protocol support to `stats/base/meanpn` [(#5908)](https://github.com/stdlib-js/stdlib/pull/5908) _(by Dhruvil Mehta, Athan Reines)_
 
 </details>
@@ -46,10 +47,11 @@ This release closes the following issue:
 
 ### Contributors
 
-A total of 2 people contributed to this release. Thank you to the following contributors:
+A total of 3 people contributed to this release. Thank you to the following contributors:
 
 -   Athan Reines
 -   Dhruvil Mehta
+-   Gururaj Gurram
 
 </section>
 
